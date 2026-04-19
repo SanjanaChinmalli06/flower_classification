@@ -2,7 +2,7 @@
 
 A complete machine learning project demonstrating flower species classification using the Iris dataset with exploratory data analysis, model training, evaluation, and a CLI prediction tool.
 
-## 📋 Project Overview
+## Project Overview
 
 This project implements a comprehensive machine learning pipeline for the Iris dataset, including:
 
@@ -14,7 +14,7 @@ This project implements a comprehensive machine learning pipeline for the Iris d
 - **Performance Evaluation**: Accuracy metrics and confusion matrices
 - **Prediction CLI**: Interactive and command-line interface for predicting flower species
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 flower_classification/
@@ -24,7 +24,7 @@ flower_classification/
 └── .venv/                        # Python virtual environment
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -43,7 +43,7 @@ cd /Users/sanjana/flower_classification
 pip install pandas numpy scikit-learn matplotlib seaborn jupyter
 ```
 
-## 📊 Jupyter Notebook Analysis
+## Jupyter Notebook Analysis
 
 The main analysis is contained in `iris_classification.ipynb` with the following sections:
 
@@ -88,7 +88,7 @@ The main analysis is contained in `iris_classification.ipynb` with the following
 - Tests with example inputs for each species
 - Demonstrates usage of both models
 
-## 🎯 Key Findings
+## Key Findings
 
 ### Model Performance
 - **Logistic Regression Accuracy**: Typically 95-98%
@@ -104,7 +104,7 @@ The main analysis is contained in `iris_classification.ipynb` with the following
 - Setosa has virtually no misclassifications (clearly distinct)
 - Logistic Regression typically performs slightly better due to linear separability
 
-## 💻 CLI Prediction Tool
+## CLI Prediction Tool
 
 ### Usage
 
@@ -153,7 +153,7 @@ python predict_iris.py -sl 5.9 -sw 3.0 -pl 4.2 -pw 1.5
 python predict_iris.py -sl 6.3 -sw 3.3 -pl 6.0 -pw 2.5
 ```
 
-## 📈 Visualizations
+## Visualizations
 
 The notebook includes several visualizations:
 
@@ -162,7 +162,7 @@ The notebook includes several visualizations:
 3. **Accuracy Comparison**: Bar chart comparing model accuracies
 4. **Confusion Matrices**: Heatmaps showing classification performance
 
-## 🔍 Feature Measurements
+## Feature Measurements
 
 The Iris dataset contains 4 features:
 
@@ -177,7 +177,7 @@ The Iris dataset contains 4 features:
 - Petal Length: 1.0 - 6.9 cm
 - Petal Width: 0.1 - 2.5 cm
 
-## 📚 Dataset Information
+## Dataset Information
 
 - **Total Samples**: 150 (50 per species)
 - **Features**: 4 numerical measurements
@@ -187,7 +187,7 @@ The Iris dataset contains 4 features:
   - Iris Virginica
 - **Source**: Classic machine learning dataset
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Python 3.x**
 - **Flask**: Web application interface
