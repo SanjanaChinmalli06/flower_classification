@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card hero" style="background: linear-gradient(135deg, #fef3c7 0%, #f7fbff 55%, #ffffff 100%);">
+  <div class="section-head">
+    <div>
+      <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #92400e; margin: 0 0 12px;">Iris Species Guide</p>
+      <h1 class="section-title" style="margin: 0; color: #0f172a;">Detailed characteristics of the three Iris species</h1>
+    </div>
+  </div>
+  <p class="section-copy">Learn about the distinct features, habitats, and identification traits of Setosa, Versicolor, and Virginica - the classic Iris dataset species used in machine learning.</p>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card" style="background: #fdf2f8; border-color: rgba(236,72,153,0.18);">
+    <h2 style="margin-top: 0; color: #9d174d;">Iris Setosa</h2>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Overview:</strong> Iris setosa is one of the three species in the Iris flower dataset, known for its distinctive and easily identifiable characteristics.</p>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Physical Characteristics:</strong></p>
+    <ul style="margin: 0 0 16px; padding-left: 20px;">
+      <li><strong>Sepal Length:</strong> Typically ranges from 4.3 to 5.8 cm (average ~5.0 cm)</li>
+      <li><strong>Sepal Width:</strong> Ranges from 2.3 to 4.4 cm (average ~3.4 cm)</li>
+      <li><strong>Petal Length:</strong> Short, ranging from 1.0 to 1.9 cm (average ~1.5 cm)</li>
+      <li><strong>Petal Width:</strong> Narrow, ranging from 0.1 to 0.6 cm (average ~0.2 cm)</li>
+    </ul>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Distinctive Features:</strong> The most distinctive feature is its very short petals, which are often described as "falls" rather than petals. The sepals are broad and rounded.</p>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Habitat:</strong> Native to northern North America, including Alaska, and is commonly found in subarctic regions.</p>
+    <p class="text-muted" style="margin: 0;"><strong>Identification:</strong> Easily distinguished by its small petals and broad sepals. In classification tasks, it forms a distinct cluster due to its unique measurements.</p>
+  </div>
+
+  <div class="info-card" style="background: #ecfeff; border-color: rgba(56,189,248,0.18);">
+    <h2 style="margin-top: 0; color: #0c4a6e;">Iris Versicolor</h2>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Overview:</strong> Iris versicolor, also known as the Blue Flag or Harlequin Blueflag, is the intermediate species in terms of measurements.</p>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Physical Characteristics:</strong></p>
+    <ul style="margin: 0 0 16px; padding-left: 20px;">
+      <li><strong>Sepal Length:</strong> Ranges from 4.9 to 7.0 cm (average ~5.9 cm)</li>
+      <li><strong>Sepal Width:</strong> Ranges from 2.0 to 3.4 cm (average ~2.8 cm)</li>
+      <li><strong>Petal Length:</strong> Moderate, ranging from 3.0 to 5.1 cm (average ~4.3 cm)</li>
+      <li><strong>Petal Width:</strong> Ranges from 1.0 to 1.8 cm (average ~1.3 cm)</li>
+    </ul>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Distinctive Features:</strong> Features intermediate petal and sepal sizes. The petals are longer than Setosa but shorter than Virginica, making it the "middle ground" species.</p>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Habitat:</strong> Widely distributed across eastern North America, from Newfoundland to Minnesota and south to Georgia.</p>
+    <p class="text-muted" style="margin: 0;"><strong>Identification:</strong> Often confused with Virginica due to overlapping measurements. Machine learning models sometimes struggle to distinguish it from Virginica, leading to classification errors.</p>
+  </div>
+
+  <div class="info-card" style="background: #fff1f2; border-color: rgba(236,72,153,0.18);">
+    <h2 style="margin-top: 0; color: #831843;">Iris Virginica</h2>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Overview:</strong> Iris virginica, commonly known as Virginia Iris or Southern Blue Flag, is the largest of the three species.</p>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Physical Characteristics:</strong></p>
+    <ul style="margin: 0 0 16px; padding-left: 20px;">
+      <li><strong>Sepal Length:</strong> Ranges from 4.9 to 7.9 cm (average ~6.6 cm)</li>
+      <li><strong>Sepal Width:</strong> Ranges from 2.2 to 3.8 cm (average ~3.0 cm)</li>
+      <li><strong>Petal Length:</strong> Longest, ranging from 4.5 to 6.9 cm (average ~5.6 cm)</li>
+      <li><strong>Petal Width:</strong> Ranges from 1.4 to 2.5 cm (average ~2.0 cm)</li>
+    </ul>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Distinctive Features:</strong> Characterized by its large size and long petals. The sepals are also broader compared to Versicolor.</p>
+    <p class="text-muted" style="margin: 0 0 12px;"><strong>Habitat:</strong> Found along the eastern coast of North America, from Florida to Newfoundland, often in wetlands and along streams.</p>
+    <p class="text-muted" style="margin: 0;"><strong>Identification:</strong> The largest species with the longest petals. While generally separable, it can overlap with Versicolor in some measurements, creating classification challenges.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title" style="margin: 0 0 16px; font-size: 1.7rem;">Comparison and Classification Insights</h2>
+  <p class="text-muted" style="margin: 0 0 12px;">The Iris dataset is a classic example in machine learning because the species are generally separable based on measurements, but with some overlap between Versicolor and Virginica.</p>
+  <p class="text-muted" style="margin: 0 0 12px;"><strong>Setosa:</strong> Forms a distinct cluster with minimal overlap, making it the easiest to classify.</p>
+  <p class="text-muted" style="margin: 0 0 12px;"><strong>Versicolor vs Virginica:</strong> These two species show more overlap, particularly in sepal measurements, which explains why some classification errors occur between them.</p>
+  <p class="text-muted" style="margin: 0;">Understanding these characteristics helps in interpreting model performance and why certain predictions might be more confident than others.</p>
+</div>
+{% endblock %}

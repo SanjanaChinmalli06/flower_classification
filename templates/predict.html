@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card hero" style="background: linear-gradient(135deg, #eef6ff 0%, #f7fbff 55%, #ffffff 100%);">
+  <div class="section-head">
+    <div>
+      <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #2563eb; margin: 0 0 12px;">Iris Predictor</p>
+      <h1 class="section-title" style="margin: 0; color: #0f172a;">Compare both models instantly for every flower measurement</h1>
+    </div>
+  </div>
+  <p class="section-copy">Enter your measurements and get simultaneous predictions from Logistic Regression and Decision Tree, with explicit accuracy and practical explanations.</p>
+</div>
+
+<div class="card">
+  <form method="post" class="form-grid">
+    <div class="field-group">
+      <label style="font-weight: 600; color: #334155;">Sepal length</label>
+      <input type="text" name="sepal_length" placeholder="e.g. 5.8" class="input-field" />
+    </div>
+    <div class="field-group">
+      <label style="font-weight: 600; color: #334155;">Sepal width</label>
+      <input type="text" name="sepal_width" placeholder="e.g. 3.0" class="input-field" />
+    </div>
+    <div class="field-group">
+      <label style="font-weight: 600; color: #334155;">Petal length</label>
+      <input type="text" name="petal_length" placeholder="e.g. 4.2" class="input-field" />
+    </div>
+    <div class="field-group">
+      <label style="font-weight: 600; color: #334155;">Petal width</label>
+      <input type="text" name="petal_width" placeholder="e.g. 1.2" class="input-field" />
+    </div>
+    <div style="display: flex; justify-content: flex-start;">
+      <button type="submit" class="button-primary">Predict with both models</button>
+    </div>
+  </form>
+
+  {% if error %}
+  <div style="color: #b91c1c; font-weight: 700;">{{ error }}</div>
+  {% endif %}
+</div>
+
+{% if result %}
+<div class="card info-grid">
+  <div class="info-card">
+    <div class="section-head" style="align-items: center; gap: 12px; margin-bottom: 16px;">
+      <div>
+        <h3 style="margin: 0; color: #0f172a;">Logistic Regression</h3>
+        <p class="text-muted" style="margin: 8px 0 0;">A linear model that uses feature weights to make a global decision.</p>
+      </div>
+      <span class="status-pill species-{{ result.lr_species|lower }}">{{ result.lr_species }}</span>
+    </div>
+    <p class="text-muted" style="margin: 0 0 12px;">Accuracy on test split: <strong>{{ result.lr_accuracy|round(1) }}%</strong></p>
+    <p style="margin: 0 0 10px;"><strong>Pros:</strong> stable predictions, easy to reason about, and smooth decision boundaries.</p>
+    <p style="margin: 0;"><strong>Cons:</strong> less capable when class separation is non-linear.</p>
+  </div>
+
+  <div class="info-card">
+    <div class="section-head" style="align-items: center; gap: 12px; margin-bottom: 16px;">
+      <div>
+        <h3 style="margin: 0; color: #0f172a;">Decision Tree</h3>
+        <p class="text-muted" style="margin: 8px 0 0;">A rule-based model that splits features hierarchically for each decision.</p>
+      </div>
+      <span class="status-pill species-{{ result.dt_species|lower }}">{{ result.dt_species }}</span>
+    </div>
+    <p class="text-muted" style="margin: 0 0 12px;">Accuracy on test split: <strong>{{ result.dt_accuracy|round(1) }}%</strong></p>
+    <p style="margin: 0 0 10px;"><strong>Pros:</strong> can capture non-linear relationships and is easy to interpret from split logic.</p>
+    <p style="margin: 0;"><strong>Cons:</strong> can overfit noisy data and may jump between classes near boundaries.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-head" style="margin-bottom: 16px;">
+    <h2 class="section-title" style="margin: 0; font-size: 1.6rem;">Why the models may predict differently</h2>
+  </div>
+  <p class="text-muted">Logistic Regression creates a single decision boundary across the entire feature space, while Decision Tree applies a series of binary splits on individual measurements. Measurements near a class boundary can therefore lead to different predictions even with the same input.</p>
+  <p class="text-muted" style="margin-top: 14px;">In practice, LR treats the four measurements as a combined weighted score. DT makes discrete choices like “petal length > 2.5?” and then moves deeper into the tree. These different approaches explain why they can disagree.</p>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">Input summary</h3>
+    <ul style="margin: 0; padding-left: 18px; color: #475569;">
+      <li>Sepal length: {{ result.sepal_length }}</li>
+      <li>Sepal width: {{ result.sepal_width }}</li>
+      <li>Petal length: {{ result.petal_length }}</li>
+      <li>Petal width: {{ result.petal_width }}</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">What to watch</h3>
+    <p class="text-muted" style="margin: 0;">If the models agree, the prediction is more reliable. If they differ, check whether measurements are near known Iris class boundaries, especially petal length.</p>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

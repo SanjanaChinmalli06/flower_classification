@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card hero" style="background: linear-gradient(135deg, #fef3c7 0%, #f7fbff 55%, #ffffff 100%);">
+  <div class="section-head">
+    <div>
+      <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #92400e; margin: 0 0 12px;">Exploratory Data Analysis</p>
+      <h1 class="section-title" style="margin: 0; color: #0f172a;">Understanding the Iris Dataset</h1>
+    </div>
+  </div>
+  <p class="section-copy">Explore the basic statistics and distribution of the famous Iris flower dataset used in machine learning.</p>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card">
+    <h2 style="margin-top: 0; color: #0f172a;">Dataset Overview</h2>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Total Samples:</strong> 150</p>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Features:</strong> 4 (Sepal Length, Sepal Width, Petal Length, Petal Width)</p>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Species:</strong> 3 (Setosa, Versicolor, Virginica)</p>
+    <p class="text-muted" style="margin: 0 0 16px;"><strong>Source:</strong> Collected by Edgar Anderson in 1935</p>
+    <p class="text-muted" style="margin: 0;"><strong>Use Case:</strong> Classic example for classification algorithms</p>
+  </div>
+
+  <div class="info-card">
+    <h2 style="margin-top: 0; color: #0f172a;">Species Distribution</h2>
+    <canvas id="speciesPieChart" width="400" height="400"></canvas>
+    <p class="text-muted" style="margin: 16px 0 0; text-align: center;">Each species has exactly 50 samples (33.3% each)</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title" style="margin: 0 0 16px; font-size: 1.7rem;">Feature Statistics</h2>
+  <div class="info-grid">
+    <div class="info-card" style="background: #fdf2f8; border-color: rgba(236,72,153,0.18);">
+      <h3 style="margin-top: 0; color: #9d174d;">Sepal Length</h3>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li><strong>Mean:</strong> 5.84 cm</li>
+        <li><strong>Std:</strong> 0.83 cm</li>
+        <li><strong>Min:</strong> 4.30 cm</li>
+        <li><strong>Max:</strong> 7.90 cm</li>
+      </ul>
+    </div>
+    <div class="info-card" style="background: #ecfeff; border-color: rgba(56,189,248,0.18);">
+      <h3 style="margin-top: 0; color: #0c4a6e;">Sepal Width</h3>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li><strong>Mean:</strong> 3.06 cm</li>
+        <li><strong>Std:</strong> 0.44 cm</li>
+        <li><strong>Min:</strong> 2.00 cm</li>
+        <li><strong>Max:</strong> 4.40 cm</li>
+      </ul>
+    </div>
+    <div class="info-card" style="background: #fff1f2; border-color: rgba(236,72,153,0.18);">
+      <h3 style="margin-top: 0; color: #831843;">Petal Length</h3>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li><strong>Mean:</strong> 3.76 cm</li>
+        <li><strong>Std:</strong> 1.77 cm</li>
+        <li><strong>Min:</strong> 1.00 cm</li>
+        <li><strong>Max:</strong> 6.90 cm</li>
+      </ul>
+    </div>
+    <div class="info-card" style="background: #fef9c3; border-color: rgba(245,158,11,0.18);">
+      <h3 style="margin-top: 0; color: #92400e;">Petal Width</h3>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li><strong>Mean:</strong> 1.20 cm</li>
+        <li><strong>Std:</strong> 0.76 cm</li>
+        <li><strong>Min:</strong> 0.10 cm</li>
+        <li><strong>Max:</strong> 2.50 cm</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title" style="margin: 0 0 16px; font-size: 1.7rem;">Key Insights</h2>
+  <p class="text-muted" style="margin: 0 0 12px;">• <strong>Setosa</strong> is linearly separable from the other two species, making it the easiest to classify.</p>
+  <p class="text-muted" style="margin: 0 0 12px;">• <strong>Versicolor and Virginica</strong> show some overlap, especially in sepal measurements, creating classification challenges.</p>
+  <p class="text-muted" style="margin: 0 0 12px;">• <strong>Petal measurements</strong> are more discriminative than sepal measurements for distinguishing species.</p>
+  <p class="text-muted" style="margin: 0;">• The dataset's balance and small size make it perfect for demonstrating machine learning concepts.</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('speciesPieChart').getContext('2d');
+    const speciesPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Setosa', 'Versicolor', 'Virginica'],
+            datasets: [{
+                data: [50, 50, 50],
+                backgroundColor: [
+                    '#f472b6',  // soft pink
+                    '#38bdf8',  // blue
+                    '#f59e0b'   // yellow
+                ],
+                borderColor: [
+                    '#f472b6',
+                    '#38bdf8',
+                    '#f59e0b'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = context.parsed;
+                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                            const percentage = Math.round((value / total) * 100);
+                            return label + ': ' + value + ' samples (' + percentage + '%)';
+                        }
+                    }
+                }
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

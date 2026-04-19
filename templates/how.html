@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card hero" style="background: linear-gradient(135deg, #fce7f3 0%, #fef3c7 45%, #e0f2fe 100%);">
+  <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #d946ef; margin: 0 0 12px;">How it Works</p>
+  <h1 class="section-title" style="margin: 0; color: #0f172a;">Understand the Iris prediction flow step by step</h1>
+  <p class="section-copy">This page explains how data enters the system, how the models are trained, and why both predictions are shown for the same input.</p>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">1. Input measurement</h3>
+    <p class="text-muted">You enter the sepal length, sepal width, petal length, and petal width of an Iris flower.</p>
+  </div>
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">2. Pre-trained models</h3>
+    <p class="text-muted">The app uses two models trained on the Iris dataset: Logistic Regression and Decision Tree.</p>
+  </div>
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">3. Dual prediction</h3>
+    <p class="text-muted">Both models predict the species independently, giving you a direct comparison for the same flower measurements.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title" style="margin: 0 0 16px; font-size: 1.7rem;">Why two models?</h2>
+  <p class="text-muted" style="margin: 0 0 12px;">Logistic Regression creates a smooth decision boundary by weighing all features together. It works well when the classes separate in a mostly linear way.</p>
+  <p class="text-muted" style="margin: 0 0 12px;">Decision Tree splits the data using yes/no rules on individual feature values. It is better at capturing non-linear patterns, but it can behave differently if the input sits close to a boundary.</p>
+  <p class="text-muted" style="margin: 0;">Showing both results helps you compare model behavior and understand which species assignment is more consistent for that input.</p>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">4. Accuracy explained</h3>
+    <p class="text-muted">The Results page shows each model's accuracy on a holdout test set, so you can see their relative performance.</p>
+  </div>
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">5. Confusion matrices</h3>
+    <p class="text-muted">Confusion matrices show where each model is strong and where it makes mistakes between Iris species.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title" style="margin: 0 0 16px; font-size: 1.7rem;">Ready to try it?</h2>
+  <p class="text-muted" style="margin: 0 0 12px;">Use the prediction page for immediate comparison, or visit the results page for deeper performance analysis.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px;">
+    <a href="{{ url_for('predict') }}" target="_blank" class="button-primary">Open Prediction</a>
+    <a href="{{ url_for('results') }}" target="_blank" class="button-secondary">Open Results</a>
+  </div>
+</div>
+{% endblock %}

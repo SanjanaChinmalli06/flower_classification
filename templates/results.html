@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card hero" style="background: linear-gradient(135deg, #eef6ff 0%, #f7fbff 55%, #ffffff 100%);">
+  <div class="section-head">
+    <div>
+      <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #2563eb; margin: 0 0 12px;">Model Comparison</p>
+      <h1 class="section-title" style="margin: 0; color: #0f172a;">Understand model performance with clean charts and metrics</h1>
+    </div>
+  </div>
+  <p class="section-copy">Explore the differences between Logistic Regression and Decision Tree with easy-to-read accuracy, confusion matrix visualization, and sharp analysis.</p>
+</div>
+
+<div class="card">
+  <div class="info-card">
+    <h2 style="margin-top: 0; color: #0f172a;">Accuracy comparison</h2>
+    <img src="data:image/png;base64,{{ acc_chart }}" alt="Accuracy comparison chart" class="chart-full" />
+  </div>
+</div>
+<div class="card">
+  <div class="info-card">
+    <h2 style="margin-top: 0; color: #0f172a;">Confusion matrices</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="info-card" style="padding: 16px; background: #f8fafc;">
+        <h3 style="margin-top: 0; color: #0f172a; font-size: 1rem;">Logistic Regression</h3>
+        <img src="data:image/png;base64,{{ cm_chart_lr }}" alt="Logistic Regression confusion matrix" class="chart-full" />
+      </div>
+      <div class="info-card" style="padding: 16px; background: #f8fafc;">
+        <h3 style="margin-top: 0; color: #0f172a; font-size: 1rem;">Decision Tree</h3>
+        <img src="data:image/png;base64,{{ cm_chart_dt }}" alt="Decision Tree confusion matrix" class="chart-full" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 class="section-title" style="margin: 0 0 16px; font-size: 1.7rem;">Algorithm strengths and behavior</h2>
+  <p class="text-muted" style="margin: 0 0 12px;">Logistic Regression is ideal when class separation is mostly linear. Decision Tree is richer for non-linear patterns and rule-based segmenting.</p>
+  <p class="text-muted" style="margin: 0 0 12px;"><strong>Logistic Regression</strong> — dependable for smooth boundaries, but less flexible when features interact in complex ways.</p>
+  <p class="text-muted" style="margin: 0 0 12px;"><strong>Decision Tree</strong> — interpretable and adaptive, but more sensitive to noisy or boundary-adjacent examples.</p>
+  <p class="text-muted" style="margin: 0;">Individual test accuracies: Logistic Regression {{ accuracy_lr|round(1) }}%, Decision Tree {{ accuracy_dt|round(1) }}%. The variance comes from LR’s global linear separator versus DT’s piecewise threshold decisions.</p>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">Logistic Regression report</h3>
+    <pre class="preformatted">{{ report_lr }}</pre>
+  </div>
+  <div class="info-card">
+    <h3 style="margin-top: 0; color: #0f172a;">Decision Tree report</h3>
+    <pre class="preformatted">{{ report_dt }}</pre>
+  </div>
+</div>
+{% endblock %}

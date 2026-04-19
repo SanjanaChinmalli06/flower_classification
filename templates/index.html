@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card hero" style="background: linear-gradient(135deg, #eef2ff 0%, #f7f9ff 55%, #ffffff 100%);">
+  <div class="section-head">
+    <div>
+      <p style="font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #2563eb; margin: 0 0 12px;">Welcome to Iris Bloom</p>
+      <h1 class="section-title" style="margin: 0; color: #0f172a;">Smart Iris prediction with clear decision insights</h1>
+    </div>
+  </div>
+  <p class="section-copy">Open the prediction workspace to compare both models instantly, or review model performance with accuracy, confusion matrices, and expert analysis.</p>
+  <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px;">
+    <a href="{{ url_for('how') }}" target="_blank" class="button-secondary">How it Works</a>
+    <a href="{{ url_for('predict') }}" target="_blank" class="button-secondary">Open Prediction</a>
+    <a href="{{ url_for('results') }}" target="_blank" class="button-secondary">Open Results</a>
+    <a href="{{ url_for('species') }}" target="_blank" class="button-secondary">Iris Species</a>
+    <a href="{{ url_for('eda') }}" target="_blank" class="button-secondary">EDA Analysis</a>
+  </div>
+</div>
+
+<div class="card" style="padding: 0; overflow: hidden; background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);">
+  <div class="info-grid" style="padding: 32px;">
+    <div class="info-card" style="background: #fdf2f8; border-color: rgba(236,72,153,0.18);">
+      <h3 style="margin-top: 0; color: #9d174d;">Start a prediction</h3>
+      <p class="text-muted">Enter your measurements, compare both models, and discover which Iris species is most likely.</p>
+    </div>
+    <div class="info-card" style="background: #ecfeff; border-color: rgba(56,189,248,0.18);">
+      <h3 style="margin-top: 0; color: #0c4a6e;">Review results</h3>
+      <p class="text-muted">Inspect accuracy charts, confusion matrices, and the model comparison logic.</p>
+    </div>
+    <div class="info-card" style="background: #fff1f2; border-color: rgba(236,72,153,0.18);">
+      <h3 style="margin-top: 0; color: #831843;">Learn how it works</h3>
+      <p class="text-muted">Visit the separate How it Works page for a clean step-by-step explanation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="card info-grid">
+  <div class="info-card" style="background: #fdf2f8; border-color: rgba(236,72,153,0.18);">
+    <h3 style="margin-top: 0; color: #9d174d;">Setosa</h3>
+    <p class="text-muted">Compact and early-blooming, Setosa shows short petals and crisp features that make it easy to identify.</p>
+  </div>
+  <div class="info-card" style="background: #ecfeff; border-color: rgba(56,189,248,0.18);">
+    <h3 style="margin-top: 0; color: #0c4a6e;">Versicolor</h3>
+    <p class="text-muted">Balanced measurements and moderate petal length make Versicolor the classic mid-range Iris.</p>
+  </div>
+  <div class="info-card" style="background: #fff1f2; border-color: rgba(236,72,153,0.18);">
+    <h3 style="margin-top: 0; color: #831843;">Virginica</h3>
+    <p class="text-muted">Bold and broad, Virginica is defined by longer petals and a more dramatic profile.</p>
+  </div>
+</div>
+{% endblock %}
